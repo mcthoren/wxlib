@@ -36,6 +36,7 @@ def graph(lx, ly, lfmt, ltitle, lylabel, lfname):
 	plt.ylabel(lylabel)
 	ymin, ymax = plt.ylim()
 	plt.twinx()
+	plt.minorticks_on()
 	plt.ylim(ymin, ymax)
 	plt.ylabel(lylabel)
 	plt.tight_layout()

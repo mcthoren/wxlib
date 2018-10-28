@@ -2,8 +2,6 @@
 # -*- coding: UTF-8 -*-
 # this code indented with actual 0x09 tabs
 
-
-import fileinput
 import matplotlib as mpl
 mpl.use('Agg')
 import matplotlib.pyplot as plt

@@ -23,6 +23,9 @@ def write_out_dat_stamp(ts, n_plate, data, wx_dir):
 	write_out(wx_dir+'/data/'+y_ts+'/'+n_plate+'.'+f_ts, data, 'a')
 
 def graph(lx, ly, lfmt, ltitle, lylabel, lfname):
+	# default font can't do subscript ₂
+	mpl.rc('font', family='DejaVu Sans')
+
 	plt.figure(figsize=(20, 6), dpi=100)
 	plt.grid(True)
 	plt.plot_date(x = lx, y = ly, fmt = lfmt)

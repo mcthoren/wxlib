@@ -14,7 +14,7 @@ def write_out(file_name, data, mode):
 	out_file_fd.write(data)
 	out_file_fd.close()
 
-def write_out_dat_stamp(ts, n_plate, data):
+def write_out_dat_stamp(ts, n_plate, data, wx_dir):
 	# year directories should be created once a year from cron
 	# that way we aren't unnecessarily checking for one every minute of every day for a year
 
@@ -23,7 +23,6 @@ def write_out_dat_stamp(ts, n_plate, data):
 	write_out(wx_dir+'/data/'+y_ts+'/'+n_plate+'.'+f_ts, data, 'a')
 
 def graph(lx, ly, lfmt, ltitle, lylabel, lfname):
-	plot_d = wx_dir+'/plots/'
 	plt.figure(figsize=(20, 6), dpi=100)
 	plt.grid(True)
 	plt.plot_date(x = lx, y = ly, fmt = lfmt)
@@ -39,5 +38,5 @@ def graph(lx, ly, lfmt, ltitle, lylabel, lfname):
 	plt.ylim(ymin, ymax)
 	plt.ylabel(lylabel)
 	plt.tight_layout()
-	plt.savefig(plot_d+lfname)
+	plt.savefig(lfname)
 	plt.close()

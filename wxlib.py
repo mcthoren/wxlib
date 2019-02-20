@@ -14,6 +14,12 @@ def proof_dir(dir_path):
 	except:
 		os.makedirs(dir_path)
 
+def proof_dat_f(dat_f_path):
+	try:
+		os.stat(dat_f_path)
+	except:
+		open(dat_f_path, 'a').close()
+
 def write_out(file_name, data, mode):
 	out_file_fd = open(file_name, mode)
 	out_file_fd.write(data)

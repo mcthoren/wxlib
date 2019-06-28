@@ -53,6 +53,30 @@ def buck_eq_kPa(temp_c):
 
 	return Psv
 
+# based on:
+# https://en.wikipedia.org/wiki/Humidity
+# https://en.wikipedia.org/wiki/Ideal_gas_law
+# https://en.wikipedia.org/wiki/Gas_constant
+def abs_hum_g_mmm(temp_c, rh):
+	# P V = m Rs T		# ideal gas law
+	# → Pp V = m Rs T	# where pressure here is partial pressure for water
+	# → V / m = Rs T / Pp
+	# ∴ m / V = Pp / Rs T	# mass / vol is abs hum
+	#
+	# RH = 100 * Pp/Ps	# Ps : saturation vapor pressure (water)
+	# → Pp = RH * Ps / 100
+
+	Ps = buck_eq_kPa(temp_c) * 1000 # 1000 Pa / kPa
+	Pp = rh * Ps / 100
+
+	# Rs = R/MH₂O = 8.314462618 [m³⋅Pa/K⋅mol] / 18.01528 [g/mol]
+	Rs = 0.4615228 # [m³·Pa / K·g]
+
+	# [m / V] = [Pa] / ( [m³·Pa / K·g] · [K] ) = [Pa·K·g / m³·Pa·K]  = [g / m³]
+	m_V = Pp / (Rs * (temp_c + 273.15))
+
+	return m_V # [g / m³]
+
 def graph(lx, ly, lfmt, ltitle, lylabel, lfname):
 	# default font can't do subscript ₂
 	mpl.rc('font', family='DejaVu Sans')

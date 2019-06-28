@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 # this code indented with actual 0x09 tabs
 
-import os
+import os sys math
 import matplotlib as mpl
 mpl.use('Agg')
 import matplotlib.pyplot as plt
@@ -31,6 +31,27 @@ def write_out_dat_stamp(ts, n_plate, data, wx_dir):
 	out_dir = wx_dir+'/data/'+y_ts
 	proof_dir(out_dir)
 	write_out(out_dir+'/'+n_plate+'.'+f_ts, data, 'a')
+
+# based on:
+# https://en.wikipedia.org/wiki/Vapour_pressure_of_water
+# https://en.wikipedia.org/wiki/Arden_Buck_equation
+def buck_eq_kPa(temp_c):
+	if (temp_c >= 0):
+		c1 = 0.61121
+		c2 = 18.678
+		c3 = 234.84
+		c4 = 257.14
+
+	if (temp_c < 0):
+		c1 = 0.61115
+		c2 = 23.036
+		c3 = 333.7
+		c4 = 279.82
+
+	# saturation vapor pressure of water
+	Psv = c1 * math.exp((c2 - temp_c / c3) * (temp_c / (c4 + temp_c)))
+
+	return Psv
 
 def graph(lx, ly, lfmt, ltitle, lylabel, lfname):
 	# default font can't do subscript ₂

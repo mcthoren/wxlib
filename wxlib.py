@@ -102,6 +102,16 @@ def heat_index(temp_c, rh):
 
 	return hi
 
+# should grab temp of most raspberry pis
+def pi_temp_read():
+	temp_file = "/sys/class/thermal/thermal_zone0/temp"
+	temp_file_fd = open(temp_file, 'r')
+
+	temp_data = temp_file_fd.read()
+	temp_file_fd.close()
+
+	return (float(temp_data) / 1000)
+
 def graph(lx, ly, lfmt, ltitle, lylabel, lfname):
 	# default font can't do subscript ₂
 	mpl.rc('font', family='DejaVu Sans')

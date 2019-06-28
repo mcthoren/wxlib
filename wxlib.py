@@ -77,6 +77,31 @@ def abs_hum_g_mmm(temp_c, rh):
 
 	return m_V # [g / m³]
 
+# based on https://en.wikipedia.org/wiki/Heat_index
+def heat_index(temp_c, rh):
+	if (temp_c < 27 or temp_c > 44):
+		return -1
+
+	if (rh < 40 or rh > 100):
+		return -1
+
+	c1 = -8.78469475556
+	c2 = 1.61139411
+	c3 = 2.33854883889
+	c4 = -0.14611605
+	c5 = -0.012308094
+	c6 = -0.0164248277778
+	c7 = 0.002211732
+	c8 = 0.00072546
+	c9 = -0.000003582
+
+	# with enough parameters, you can fit a curve to a cow
+	hi = c1 + c2 * temp_c + c3 * rh + c4 * temp_c * rh + c5 * temp_c * temp_c + \
+	c6 * rh * rh + c7 * temp_c * temp_c * rh + \
+	c8 * temp_c * rh * rh + c9 * temp_c * temp_c * rh * rh
+
+	return hi
+
 def graph(lx, ly, lfmt, ltitle, lylabel, lfname):
 	# default font can't do subscript ₂
 	mpl.rc('font', family='DejaVu Sans')

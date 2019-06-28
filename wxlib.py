@@ -2,11 +2,7 @@
 # -*- coding: UTF-8 -*-
 # this code indented with actual 0x09 tabs
 
-import os sys math
-import matplotlib as mpl
-mpl.use('Agg')
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
+import os, sys, math
 
 def proof_dir(dir_path):
 	try:
@@ -110,9 +106,14 @@ def pi_temp_read():
 	temp_data = temp_file_fd.read()
 	temp_file_fd.close()
 
-	return (float(temp_data) / 1000)
+	return temp_data
 
 def graph(lx, ly, lfmt, ltitle, lylabel, lfname):
+	import matplotlib as mpl
+	mpl.use('Agg')
+	import matplotlib.pyplot as plt
+	import matplotlib.dates as mdates
+
 	# default font can't do subscript ₂
 	mpl.rc('font', family='DejaVu Sans')
 

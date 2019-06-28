@@ -26,9 +26,6 @@ def write_out(file_name, data, mode):
 	out_file_fd.close()
 
 def write_out_dat_stamp(ts, n_plate, data, wx_dir):
-	# year directories should be created once a year from cron
-	# that way we aren't unnecessarily checking for one every minute of every day for a year
-
 	f_ts = ts[0:8]
 	y_ts = ts[0:4]
 	out_dir = wx_dir+'/data/'+y_ts

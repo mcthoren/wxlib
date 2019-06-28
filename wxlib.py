@@ -28,6 +28,17 @@ def write_out_dat_stamp(ts, n_plate, data, wx_dir):
 	proof_dir(out_dir)
 	write_out(out_dir+'/'+n_plate+'.'+f_ts, data, 'a')
 
+# dew point equations and constants from:
+# http://journals.ametsoc.org/doi/pdf/10.1175/BAMS-86-2-22
+def dew_point_c(temp_c, rh):
+	Ca = 17.625
+	Cb = 243.04 # [°C]
+
+        gamma = math.log(rh / 100) + ((Ca * temp_c) / (Cb + temp_c))
+        Tdew = (Cb * gamma) / (Ca - gamma)
+
+	return Tdew
+
 # based on:
 # https://en.wikipedia.org/wiki/Vapour_pressure_of_water
 # https://en.wikipedia.org/wiki/Arden_Buck_equation

@@ -1,1 +1,13 @@
-Create a common python module to include the functions I seem to be calling in multiple programs.
+A common python module of functions I seem to be calling in multiple weather related programs.
+Basically, when I find myself repeating code, I factor it out and dump it here.
+
+This code can be found here:
+	https://github.com/mcthoren/wxlib
+
+This library is used in at least the following places so far:
+	https://wx1.slackology.net/plots/wx.html
+	https://wx2.slackology.net/plots/co2_wx.html
+	https://wx3.slackology.net/plots/dust_wx.html
+	https://wx4.slackology.net/plots/co2_wx.html
+	https://wx5.slackology.net/plots/particles.html
+	https://wx6.slackology.net/gps_el.html

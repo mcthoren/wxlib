@@ -195,7 +195,7 @@ def bme680_read():
 	# libraries and examples from:
 	# https://learn.pimoroni.com/tutorial/sandyj/getting-started-with-bme680-breakout
 
-	import bme680
+	import bme680, time
 
 	iter = 16
 	avg = 0

@@ -119,6 +119,28 @@ def pi_temp_read():
 
 	return temp_data
 
+def bmp085_read():
+	# https://www.adafruit.com/products/391
+	# https://github.com/adafruit/Adafruit_Python_BMP/
+	import Adafruit_BMP.BMP085 as BMP085
+
+	pressures = []
+	iter = 16
+	avg = 0
+
+	sensor = BMP085.BMP085(mode=BMP085.BMP085_ULTRAHIGHRES, busnum=0)
+
+	temp = sensor.read_temperature()
+
+	# datasheet suggests averaging
+	for x in range(0, iter):
+		pressures.append(sensor.read_pressure())
+		avg += pressures[x]
+
+	avg = avg / iter
+
+	return (temp, avg / 1000.0)
+
 def sht11_read():
 	# roughly the reference implementation:
 	# https://pypi.python.org/pypi/rpiSht1x/1.2

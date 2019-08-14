@@ -163,7 +163,6 @@ def htu21df_read():
 	# https://github.com/dalexgray/RaspberryPI_HTU21DF/
 
 	import Adafruit_GPIO.I2C as I2C
-	import math
 
 	temp_read = 0xE3
 	hum_read = 0xE5
@@ -196,7 +195,7 @@ def bme680_read():
 	# libraries and examples from:
 	# https://learn.pimoroni.com/tutorial/sandyj/getting-started-with-bme680-breakout
 
-	import bme680, math, time
+	import bme680
 
 	iter = 16
 	avg = 0

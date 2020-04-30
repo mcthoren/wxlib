@@ -34,8 +34,8 @@ def dew_point_c(temp_c, rh):
 	Ca = 17.625
 	Cb = 243.04 # [°C]
 
-        gamma = math.log(rh / 100) + ((Ca * temp_c) / (Cb + temp_c))
-        Tdew = (Cb * gamma) / (Ca - gamma)
+	gamma = math.log(rh / 100) + ((Ca * temp_c) / (Cb + temp_c))
+	Tdew = (Cb * gamma) / (Ca - gamma)
 
 	return Tdew
 

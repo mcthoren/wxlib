@@ -238,6 +238,7 @@ def bme680_read():
 def graph(lx, ly, lfmt, ltitle, lylabel, lfname):
 	import matplotlib as mpl
 	mpl.use('Agg')
+	mpl.rcParams['mathtext.default'] = 'rm'
 	import matplotlib.pyplot as plt
 	import matplotlib.dates as mdates
 

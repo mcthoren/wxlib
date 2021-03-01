@@ -1,4 +1,4 @@
-#!/usr/local/bin/python2.7
+#!/usr/bin/python3
 # -*- coding: UTF-8 -*-
 # this code indented with actual 0x09 tabs
 

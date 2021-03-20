@@ -188,7 +188,7 @@ def htu21df_read():
 
 	return (temp, hum)
 
-def bme680_read():
+def bme680_read(i2c_addr = 0x77):
 	# sensor + breakout board from:
 	# https://www.adafruit.com/product/3660
 
@@ -200,7 +200,7 @@ def bme680_read():
 	iter = 16
 	avg = 0
 
-	sensor = bme680.BME680(i2c_addr=0x77)
+	sensor = bme680.BME680(i2c_addr)
 
 	sensor.set_humidity_oversample(bme680.OS_2X)
 	sensor.set_pressure_oversample(bme680.OS_4X)

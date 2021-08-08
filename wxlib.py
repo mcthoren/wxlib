@@ -21,8 +21,17 @@ def write_out(file_name, data, mode):
 	out_file_fd.write(data)
 	out_file_fd.close()
 
+# expects a %Y%m%d... timestamp
 def write_out_dat_stamp(ts, n_plate, data, wx_dir):
 	f_ts = ts[0:8]
+	y_ts = ts[0:4]
+	out_dir = wx_dir+'/data/'+y_ts
+	proof_dir(out_dir)
+	write_out(out_dir+'/'+n_plate+'.'+f_ts, data, 'a')
+
+# expects a %F... timestamp
+def write_out_dat_stamp_iso(ts, n_plate, data, wx_dir):
+	f_ts = ts[0:10]
 	y_ts = ts[0:4]
 	out_dir = wx_dir+'/data/'+y_ts
 	proof_dir(out_dir)

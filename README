@@ -5,6 +5,11 @@ This code can be found here:
 	https://github.com/mcthoren/wxlib
 
 This library is used in at least the following places so far:
+	https://wx.slackology.net/pickle_licht.html
+	https://wx0.slackology.net/wx/plots/wx.html
+	https://wx0.slackology.net/dust_wx/plots
+	https://wx0.slackology.net/power_weather/power.html
+	https://wx0.slackology.net/mqs/mq_gases.html
 	https://wx1.slackology.net/plots/wx.html
 	https://wx2.slackology.net/plots/co2_wx.html
 	https://wx3.slackology.net/plots/dust_wx.html
@@ -13,3 +18,6 @@ This library is used in at least the following places so far:
 	https://wx6.slackology.net/gps_el.html
 	https://wx7.slackology.net/light_wx.html
 	https://wx8.slackology.net/solar_power.html
+	https://wx9.slackology.net/crater.html
+	https://wx-0x0a.slackology.net/linty.9dof.html
+	https://wx-0x0b.slackology.net/plots/wx.html

@@ -126,10 +126,10 @@ def heat_index(temp_c, rh):
 # from −1° to +0.65°C, with mean absolute error of less than 0.3°C."
 def web_bulb_temp(temp_c, rh):
 	if (temp_c < -20 or temp_c > 50):
-		return -1
+		return math.nan
 
 	if (rh < 5 or rh > 99):
-		return -1
+		return math.nan
 
 	c1 = 0.151977
 	c2 = 8.313659

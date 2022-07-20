@@ -118,6 +118,31 @@ def heat_index(temp_c, rh):
 
 	return hi
 
+# another emperical derivation from ametsoc, published here:
+# https://journals.ametsoc.org/view/journals/apme/50/11/jamc-d-11-0143.1.xml
+# "This equation is valid for relative humidities between 5% and 99% and for air
+# temperatures between −20° and 50°C, except for situations having both low humidity
+# and cold temperature. Over the valid range, errors in wet-bulb temperature range
+# from −1° to +0.65°C, with mean absolute error of less than 0.3°C."
+def web_bulb_temp(temp_c, rh):
+	if (temp_c < -20 or temp_c > 50):
+		return -1
+
+	if (rh < 5 or rh > 99):
+		return -1
+
+	c1 = 0.151977
+	c2 = 8.313659
+	c3 = 1.676331
+	c4 = 0.00391838
+	c5 = 0.023101
+	c6 = 4.686035
+
+	Tw = temp_c * math.atan(c1 * (rh + c2) ** (1/2)) + math.atan(temp_c + rh) - \
+	math.atan(rh - c3) + c4 * (rh) ** (3/2) * math.atan(c5 * rh) - c6
+
+	return Tw
+
 # should grab temp of most raspberry pis
 def pi_temp_read():
 	temp_file = "/sys/class/thermal/thermal_zone0/temp"

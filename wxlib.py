@@ -124,11 +124,16 @@ def heat_index(temp_c, rh):
 # temperatures between −20° and 50°C, except for situations having both low humidity
 # and cold temperature. Over the valid range, errors in wet-bulb temperature range
 # from −1° to +0.65°C, with mean absolute error of less than 0.3°C."
+#
+# we're going to run the humidity a little higher than 99% with the knowledge that
+# it might be less accurate, because we live in central europe, where a 99% upper RH
+# limit is sadly not a practical thing to have. much to my sticky dismay. i'll watch
+# the numbers for a while and see how this does. 2022-08-02
 def web_bulb_temp(temp_c, rh):
 	if (temp_c < -20 or temp_c > 50):
 		return math.nan
 
-	if (rh < 5 or rh > 99):
+	if (rh < 5 or rh > 101):
 		return math.nan
 
 	c1 = 0.151977

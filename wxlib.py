@@ -274,6 +274,9 @@ def bme680_read(i2c_addr = 0x77):
 
 	return (temp, hum, pres_avg / 10, gas_res)
 
+def hostname():
+	return os.uname()[1]
+
 def graph(lx, ly, lfmt, ltitle, lylabel, lfname):
 	import matplotlib as mpl
 	mpl.use('Agg')
